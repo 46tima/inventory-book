@@ -26,7 +26,7 @@ function App() {
         fetchComputers();
     }, []);
 
-    async function handleSubmit(e: React.FormEvent) {
+    async function createComputer(e: React.FormEvent) {
         e.preventDefault();
 
         await fetch("http://localhost:8080/computers", {
@@ -51,6 +51,12 @@ function App() {
         }
     }
 
+    //DELETE
+    async function deleteComputerById(id: number) {
+        const response = await fetch("http://localhost:8080/computers{}");
+        method: "DELETE";
+    }
+
     return (
         <div>
             <h1>Компьютеры</h1>
@@ -63,21 +69,19 @@ function App() {
                 ))}
             </ul>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={createComputer}>
                 <input
                     type="text"
                     placeholder="Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
-
                 <input
                     type="text"
                     placeholder="Room"
                     value={room}
                     onChange={(e) => setRoom(e.target.value)}
                 />
-
                 <button type="submit">Добавить</button>
             </form>
         </div>
