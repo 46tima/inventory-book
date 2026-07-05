@@ -13,7 +13,7 @@ var db *sql.DB
 type Computer struct {
 	ID   int    `json:"id"`
 	Name string `json:"name"`
-	Room string `json:"room"`
+	Room int    `json:"room"`
 }
 
 func enableCors(w http.ResponseWriter) {
