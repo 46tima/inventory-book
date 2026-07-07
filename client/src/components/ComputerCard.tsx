@@ -1,23 +1,23 @@
-import type { Computer } from "../types/computer";
+import Card from "./Card"
+import ComputerDetails from "./ComputerDetails"
+
+import type { Computer } from "../types/computer"
 
 type ComputerCardProps = {
-    computer: Computer;
-};
-
-function ComputerCard({ computer }: ComputerCardProps) {
-    return (
-        <div className="computer-card">
-            <h2>{computer.name}</h2>
-
-            <p>Кабинет: {computer.room}</p>
-            <p>Инвентарный номер: {computer.inventoryNumber}</p>
-            <p>IP-адрес: {computer.ipAddress}</p>
-
-            <p className={computer.isWorking ? "status-good" : "status-bad"}>
-                Статус: {computer.isWorking ? "Работает" : "Не работает"}
-            </p>
-        </div>
-    );
+  computer: Computer
+  onDelete: (id: number) => void
 }
 
-export default ComputerCard;
+function ComputerCard({ computer, onDelete }: ComputerCardProps) {
+  return (
+    <Card title={computer.name}>
+      <ComputerDetails computer={computer} />
+
+      <button onClick={() => onDelete(computer.id)}>
+        Удалить
+      </button>
+    </Card>
+  )
+}
+
+export default ComputerCard

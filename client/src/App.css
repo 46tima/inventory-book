@@ -1,100 +1,135 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f3f4f6;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f4f6;
 }
 
 .app {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
 }
 
 .header {
-    background: white;
-    padding: 24px;
-    border-radius: 16px;
-    border: 1px solid #e5e7eb;
-    margin-bottom: 20px;
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
 }
 
 .header h1 {
-    margin: 0 0 8px;
+  margin: 0 0 8px;
 }
 
 .header p {
-    margin: 0;
-    color: #6b7280;
+  margin: 0;
+  color: #6b7280;
 }
 
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
+.card {
+  background: white;
+  padding: 18px;
+  margin-top: 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
 }
 
-.stat-card {
-    background: white;
-    padding: 18px;
-    border-radius: 14px;
-    border: 1px solid #e5e7eb;
+.card h2 {
+  margin-top: 0;
 }
 
-.stat-card h3 {
-    margin: 0 0 8px;
-    color: #6b7280;
-    font-size: 16px;
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.stat-card p {
-    margin: 0;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.filter-buttons {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+input,
+select {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
 }
 
 button {
-    padding: 10px 14px;
-    border: 1px solid #d1d5db;
-    background: white;
-    border-radius: 10px;
-    cursor: pointer;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f9fafb;
 }
 
 button.active {
-    background: #111827;
-    color: white;
+  background: #111827;
+  color: white;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.stats p {
+  margin: 0;
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 10px;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
 }
 
 .computer-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-}
-
-.computer-card {
-    background: white;
-    padding: 18px;
-    border-radius: 14px;
-    border: 1px solid #e5e7eb;
-}
-
-.computer-card h2 {
-    margin-top: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .status-good {
-    color: green;
-    font-weight: bold;
+  color: green;
+  font-weight: bold;
 }
 
 .status-bad {
-    color: red;
-    font-weight: bold;
+  color: red;
+  font-weight: bold;
+}
+
+.status-warning {
+  color: orange;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.empty {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  color: #6b7280;
+}
+
+.footer {
+  margin-top: 24px;
+  color: #6b7280;
 }
