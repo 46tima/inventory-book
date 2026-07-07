@@ -1,88 +1,21 @@
-import { useEffect, useState } from "react";
+import type { Computer } from "../types/computer";
 
-interface Computer {
-    id: number;
-    name: string;
-    room: string;
-}
+type ComputerCardProps = {
+    computer: Computer;
+};
 
-function ComputerCard() {
-    // my
-    const [computers, setComputers] = useState<Computer[]>([]);
-    const [name, setName] = useState("");
-    const [room, setRoom] = useState("");
-
-    useEffect(() => {
-        async function fetchComputers() {
-            const response = await fetch("http://localhost:8080/computers");
-            const data = await response.json();
-
-            if (Array.isArray(data)) {
-                setComputers(data);
-            } else {
-                setComputers([]);
-            }
-        }
-
-        fetchComputers();
-    }, []);
-
-    async function createComputer(e: React.FormEvent) {
-        e.preventDefault();
-
-        await fetch("http://localhost:8080/computers", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name,
-                room,
-            }),
-        });
-
-        setName("");
-        setRoom("");
-
-        const response = await fetch("http://localhost:8080/computers");
-        const data = await response.json();
-
-        if (Array.isArray(data)) {
-            setComputers(data);
-        }
-    }
-
-    //DELETE
-    async function deleteComputerById(id: number) {
-        const response = await fetch("http://localhost:8080/computers{}");
-        method: "DELETE";
-    }//my_end
-
+function ComputerCard({ computer }: ComputerCardProps) {
     return (
-        <div className="card">
-            <ul>
-                {computers.map((computer) => (
-                    <li key={computer.id}>
-                        {computer.id} - {computer.name} - {computer.room}
-                    </li>
-                ))}
-            </ul>
+        <div className="computer-card">
+            <h2>{computer.name}</h2>
 
-            <form onSubmit={createComputer}>
-                <input
-                    type="text"
-                    placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Room"
-                    value={room}
-                    onChange={(e) => setRoom(e.target.value)}
-                />
-                <button type="submit">Добавить</button>
-            </form>
+            <p>Кабинет: {computer.room}</p>
+            <p>Инвентарный номер: {computer.inventoryNumber}</p>
+            <p>IP-адрес: {computer.ipAddress}</p>
+
+            <p className={computer.isWorking ? "status-good" : "status-bad"}>
+                Статус: {computer.isWorking ? "Работает" : "Не работает"}
+            </p>
         </div>
     );
 }

@@ -1,74 +1,92 @@
-/* body {
-    font-family: Arial, sans-serif;
-    background: #f3f4f6;
-}
-
-div {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-}
-
-h1 {
-    color: #111827;
-}
-
-p {
-    font-size: 18px;
-} */
-
-/* День 2 */
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
     background: #f3f4f6;
 }
 
 .app {
-    max-width: 700px;
+    max-width: 900px;
     margin: 40px auto;
     padding: 20px;
-}
-
-.card {
-    background: white;
-    padding: 16px;
-    margin-top: 16px;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
 }
 
 .header {
     background: white;
-    padding: 20px;
-    border-radius: 12px;
+    padding: 24px;
+    border-radius: 16px;
     border: 1px solid #e5e7eb;
+    margin-bottom: 20px;
 }
 
-.footer {
-    margin-top: 20px;
+.header h1 {
+    margin: 0 0 8px;
+}
+
+.header p {
+    margin: 0;
     color: #6b7280;
 }
 
-/* День 3 */
-body {
-    font-family: Arial, sans-serif;
-    background: #f3f4f6;
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-.app {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-.card {
+.stat-card {
     background: white;
-    padding: 16px;
-    margin-top: 16px;
-    border-radius: 12px;
+    padding: 18px;
+    border-radius: 14px;
     border: 1px solid #e5e7eb;
+}
+
+.stat-card h3 {
+    margin: 0 0 8px;
+    color: #6b7280;
+    font-size: 16px;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    background: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button.active {
+    background: #111827;
+    color: white;
+}
+
+.computer-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.computer-card {
+    background: white;
+    padding: 18px;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+}
+
+.computer-card h2 {
+    margin-top: 0;
 }
 
 .status-good {
