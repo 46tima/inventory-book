@@ -18,16 +18,16 @@ export function getStatusText(status: ComputerStatus) {
 
 export function getStatusClass(status: ComputerStatus) {
   if (status === "working") {
-    return "status-good"
+    return "text-green-600"
   }
 
   if (status === "broken") {
-    return "status-bad"
+    return "text-red-600"
   }
 
   if (status === "maintenance") {
-    return "status-warning"
+    return "text-orange-500"
   }
 
-  return ""
+  return "text-gray-600"
 }

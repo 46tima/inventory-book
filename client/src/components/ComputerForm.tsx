@@ -2,10 +2,11 @@ import { useState } from "react"
 import type { FormEvent } from "react"
 
 import Card from "./Card"
-import type { Computer, ComputerStatus } from "../types/computer"
+import type { ComputerStatus } from "../types/computer"
+import type { CreateComputerDto } from "../api/computersApi"
 
 type ComputerFormProps = {
-  onAddComputer: (computer: Computer) => void
+  onAddComputer: (computer: CreateComputerDto) => void
 }
 
 function ComputerForm({ onAddComputer }: ComputerFormProps) {
@@ -16,6 +17,9 @@ function ComputerForm({ onAddComputer }: ComputerFormProps) {
   const [status, setStatus] = useState<ComputerStatus>("working")
   const [hasAntivirus, setHasAntivirus] = useState<boolean>(true)
   const [error, setError] = useState<string>("")
+
+  const inputClass =
+    "w-full rounded-xl border border-gray-300 px-4 py-2 outline-none transition focus:border-blue-500"
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -45,8 +49,7 @@ function ComputerForm({ onAddComputer }: ComputerFormProps) {
       return
     }
 
-    const newComputer: Computer = {
-      id: Date.now(),
+    const newComputer: CreateComputerDto = {
       name,
       room,
       ipAddress,
@@ -68,34 +71,43 @@ function ComputerForm({ onAddComputer }: ComputerFormProps) {
 
   return (
     <Card title="Добавить компьютер">
-      <form className="form" onSubmit={handleSubmit}>
-        {error && <p className="error">{error}</p>}
+      <form className="space-y-3" onSubmit={handleSubmit}>
+        {error && (
+          <p className="rounded-xl bg-red-50 p-3 font-bold text-red-600">
+            {error}
+          </p>
+        )}
 
         <input
+          className={inputClass}
           placeholder="Название ПК"
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
 
         <input
+          className={inputClass}
           placeholder="Кабинет"
           value={room}
           onChange={(event) => setRoom(event.target.value)}
         />
 
         <input
+          className={inputClass}
           placeholder="IP-адрес"
           value={ipAddress}
           onChange={(event) => setIpAddress(event.target.value)}
         />
 
         <input
+          className={inputClass}
           placeholder="Инвентарный номер"
           value={inventoryNumber}
           onChange={(event) => setInventoryNumber(event.target.value)}
         />
 
         <select
+          className={inputClass}
           value={status}
           onChange={(event) =>
             setStatus(event.target.value as ComputerStatus)
@@ -106,8 +118,9 @@ function ComputerForm({ onAddComputer }: ComputerFormProps) {
           <option value="maintenance">На обслуживании</option>
         </select>
 
-        <label className="checkbox-label">
+        <label className="flex cursor-pointer items-center gap-2 text-sm text-gray-700">
           <input
+            className="h-4 w-4"
             type="checkbox"
             checked={hasAntivirus}
             onChange={(event) => setHasAntivirus(event.target.checked)}
@@ -115,7 +128,12 @@ function ComputerForm({ onAddComputer }: ComputerFormProps) {
           Антивирус установлен
         </label>
 
-        <button type="submit">Добавить</button>
+        <button
+          className="rounded-xl bg-gray-900 px-4 py-2 font-medium text-white transition hover:bg-gray-700"
+          type="submit"
+        >
+          Добавить
+        </button>
       </form>
     </Card>
   )

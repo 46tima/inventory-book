@@ -11,9 +11,13 @@ import (
 var db *sql.DB
 
 type Computer struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-	Room int    `json:"room"`
+	ID              int    `json:"id"`
+	Name            string `json:"name"`
+	Room            string `json:"room"`
+	IPAddress       string `json:"ipAddress"`
+	InventoryNumber int    `json:"inventoryNumber"`
+	Status          string `json:"status"`
+	HasAntivirus    bool   `json:"hasAntivirus"`
 }
 
 func enableCors(w http.ResponseWriter) {
@@ -23,7 +27,7 @@ func enableCors(w http.ResponseWriter) {
 }
 
 func computersHandler(w http.ResponseWriter, r *http.Request) {
-	enableCors(w)
+	//enableCors(w)
 	w.Header().Set("Content-Type", "application/json")
 
 	if r.Method == http.MethodOptions {

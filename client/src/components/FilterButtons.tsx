@@ -9,31 +9,42 @@ function FilterButtons({
   currentFilter,
   onChangeFilter,
 }: FilterButtonsProps) {
+  function getButtonClass(filter: ComputerFilter) {
+    const baseClass =
+      "rounded-xl border px-4 py-2 text-sm font-medium transition"
+
+    if (currentFilter === filter) {
+      return `${baseClass} border-gray-900 bg-gray-900 text-white`
+    }
+
+    return `${baseClass} border-gray-300 bg-white text-gray-700 hover:bg-gray-50`
+  }
+
   return (
-    <div className="filter-buttons">
+    <div className="mt-4 flex flex-wrap gap-2">
       <button
-        className={currentFilter === "all" ? "active" : ""}
+        className={getButtonClass("all")}
         onClick={() => onChangeFilter("all")}
       >
         Все
       </button>
 
       <button
-        className={currentFilter === "working" ? "active" : ""}
+        className={getButtonClass("working")}
         onClick={() => onChangeFilter("working")}
       >
         Рабочие
       </button>
 
       <button
-        className={currentFilter === "broken" ? "active" : ""}
+        className={getButtonClass("broken")}
         onClick={() => onChangeFilter("broken")}
       >
         Неисправные
       </button>
 
       <button
-        className={currentFilter === "maintenance" ? "active" : ""}
+        className={getButtonClass("maintenance")}
         onClick={() => onChangeFilter("maintenance")}
       >
         На обслуживании

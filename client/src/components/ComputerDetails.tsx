@@ -7,12 +7,12 @@ type ComputerDetailsProps = {
 
 function ComputerDetails({ computer }: ComputerDetailsProps) {
   return (
-    <>
+    <div className="space-y-2 text-sm text-gray-700">
       <p>Кабинет: {computer.room}</p>
       <p>IP-адрес: {computer.ipAddress}</p>
       <p>Инвентарный номер: {computer.inventoryNumber}</p>
 
-      <p className={getStatusClass(computer.status)}>
+      <p className={`font-bold ${getStatusClass(computer.status)}`}>
         Статус: {getStatusText(computer.status)}
       </p>
 
@@ -22,9 +22,11 @@ function ComputerDetails({ computer }: ComputerDetailsProps) {
       </p>
 
       {!computer.hasAntivirus && (
-        <p className="error">Нужно установить антивирус</p>
+        <p className="font-bold text-red-600">
+          Нужно установить антивирус
+        </p>
       )}
-    </>
+    </div>
   )
 }
 

@@ -11,12 +11,12 @@ type ComputerListProps = {
 function ComputerList({ computers, onDelete }: ComputerListProps) {
   if (computers.length === 0) {
     return (
-      <EmptyState message="Компьютеров по этому фильтру нет" />
+      <EmptyState message="Компьютеров не найдено" />
     )
   }
 
   return (
-    <div className="computer-list">
+    <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
       {computers.map((computer) => (
         <ComputerCard
           key={computer.id}
